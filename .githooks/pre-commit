@@ -1,0 +1,21 @@
+#!/bin/sh
+# K-IFRS 제1118호 아카이브 — 저작권 자가검사 (pre-commit 훅)
+# 스테이징된 *.html 에 기준서 전문 복제 의심이 있으면 커밋을 막는다.
+# 오탐이라 확신하면:  git commit --no-verify
+
+files=$(git diff --cached --name-only --diff-filter=ACM | grep '\.html$')
+[ -z "$files" ] && exit 0
+
+echo "▶ 저작권 자가검사 (check-copyright.js)…"
+node check-copyright.js $files
+status=$?
+
+if [ $status -ne 0 ]; then
+  echo ""
+  echo "✗ 커밋 중단 — 위 항목을 확인하세요."
+  echo "  · 전문 복제면 '번호 + 자기표현 요약'으로 교체 후 다시 커밋"
+  echo "  · 오탐이 확실하면  git commit --no-verify"
+  exit 1
+fi
+echo "✓ 통과"
+exit 0
