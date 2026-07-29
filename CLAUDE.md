@@ -5,8 +5,8 @@
 ## 프로젝트 개요
 - **범위**: K-IFRS 제1118호만. 다른 주제로 확장하지 않는다.
 - **두 축**:
-  - `A 개정 지도` (`/amendments`) — 1118호 제정에 따라 개정된 기준서 정리
-  - `B 쟁점 해설` (`/issues`) — 실무 쟁점을 갑설·을설·결론으로 해설
+  - `A 개정` (`/amendments`) — 개정 지도 1장(전체 영향도 표) + 실질 개정 소수만 상세 페이지. 40개를 페이지로 쪼개지 않는다.
+  - `B 쟁점 해설` (`/issues`) — 실무 쟁점을 갑설·을설·결론으로 해설. **진짜 가치의 핵심 축.**
 - **단계**: 초기. 콘텐츠를 하나씩 추가하는 중. 지금은 정적 HTML, 이후 Next.js 이전 예정.
 - **대상 독자**: 회계사·감사인·회계 실무자·CPA 수험생.
 
@@ -54,10 +54,18 @@ https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=N
 - 배포 시 경로: 하위 폴더 구조(`/issues/...`)로 가면 링크를 `href="/shared.css"`(루트 절대경로)로 바꾼다. Next.js 이전 시 전역 import로 교체.
 
 ## 페이지 유형 템플릿
-- `B 쟁점 페이지` → 스킬 `kifrs-issue-page` 사용. 기준 파일: `kifrs1118-customer-financing-interest.html`
-- `A 개정 지도` → 스킬 `kifrs-amendment-page` 사용. 기준 파일: `kifrs1118-amendment-1115.html`
+- `B 쟁점 페이지` → 스킬 `kifrs-issue-page`. 기준 파일: `kifrs1118-customer-financing-interest.html`
+- `A 개정 지도(전체 1장)` → 스킬 `kifrs-amendment-map`. 마스터 소스 하나에서 영향도 표로 요약. `/amendments` 인덱스 겸용.
+- `A 개정 상세(실질 소수)` → 스킬 `kifrs-amendment-page`. 실질 개정 기준서만. 기준 파일: `kifrs1118-amendment-1115.html`
+
+## 소스 (sources/)
+- `sources/1118-consequential-amendments.txt` — 1118호 제정에 따른 타 기준서 개정 **전체 신구대조본**. **A의 유일한 마스터 소스.** (기준서를 하나씩 뒤지지 않는다)
+- `sources/tf-3rd-meeting.txt` — 정착지원 TF 3차 논의(쟁점 재료, B).
+- `sources/standards/` — (선택) 실질 개정 기준서 원문 PDF. 깊은 A 페이지 맥락용.
+- 원문이 HWP면 텍스트로 변환해 넣는다(Claude Code가 바로 읽게).
 
 ## 작업 방식
-- KAI 원문(PDF/텍스트)을 먼저 받는다. 대용량 기준서는 `"1118" 언급 검색 → 개정 근거 문단(C1D 등) → 개정 대상 문단` 순으로 좁혀 찾는다.
+- **A(개정)**: 기준서를 하나씩 뒤지지 않는다. `sources/1118-consequential-amendments.txt`에서 해당 기준서 섹션을 찾는다. 지도 1장 + 실질 소수만 상세.
+- **B(쟁점)**: 해당 TF/질의회신 소스에서 쟁점·갑설/을설·결론을 뽑는다. 마스터만으로 불분명하면 지어내지 말고 '대조본/원문 확인 필요'로 표시.
 - 완료 전 자가 점검: ① 문단 전문 복제 없음 ② 근거 문단·출처 링크 포함 ③ 반응형·접근성 ④ 하단 고지 포함.
 - 페이지 작성 후 `node check-copyright.js <파일>` 을 실행해 저작권 자가검사(전문 복제 자동 점검)를 통과시킨다. Git 커밋 시 pre-commit 훅으로도 자동 실행된다.
