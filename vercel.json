@@ -1,7 +1,6 @@
 {
   "cleanUrls": true,
   "rewrites": [
-    { "source": "/", "destination": "/kifrs1118-home" },
-    { "source": "/amendments", "destination": "/amendments-map" }
+    { "source": "/", "destination": "/kifrs1118-home" }
   ]
 }
