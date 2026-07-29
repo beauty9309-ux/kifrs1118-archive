@@ -95,6 +95,10 @@ code.para{font-family:"JetBrains Mono",monospace; font-size:13px; font-weight:60
 .scale span.on{color:var(--accent-ink); background:var(--accent-tint); border-color:#BFE0D2;}
 .impact .txt{font-family:"Noto Serif KR",serif; font-size:20px; font-weight:600; color:var(--accent-ink); line-height:1.5;}
 .impact .note{font-size:14px; color:var(--ink-soft); margin-top:8px;}
+/* 영향도 '높음' — 실질 개정 페이지용 경고 톤 */
+.impact.high{background:var(--amber-tint); border-color:#E8D5AE;}
+.impact.high .lbl, .impact.high .txt{color:var(--amber-ink);}
+.impact.high .scale span.on{color:var(--amber-ink); background:#fff; border-color:#E8D5AE;}
 
 .diff{background:var(--surface); border:1px solid var(--line); border-radius:14px; overflow:hidden; margin-top:6px;}
 .diff .head{padding:12px 20px; border-bottom:1px solid var(--line-soft); font-size:13px; color:var(--muted);}
