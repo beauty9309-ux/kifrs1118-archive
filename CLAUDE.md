@@ -38,7 +38,11 @@ https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=N
 레이아웃·접근성:
 - 콘텐츠 페이지 `max-width:760px`, 홈 `820px`.
 - 하한선: skip 링크, `:focus-visible` 아웃라인, `prefers-reduced-motion` 대응, 모바일 반응형, 시맨틱 HTML, `lang="ko"`.
-- **콘텐츠 페이지(A/B)의 CSS는 `shared.css`에 있다.** 새 페이지는 `<link rel="stylesheet" href="shared.css" />`로 부르고, CSS를 새로 만들지 않는다. 필요한 컴포넌트(.verdict/.views/.impact/.diff 등)는 이미 shared.css에 있으니 클래스만 쓴다.
+- **콘텐츠 페이지(A/B)의 CSS는 `shared.css`에 있다.** 새 페이지는 `<link rel="stylesheet" href="/shared.css" />`(루트 절대경로)로 부르고, CSS를 새로 만들지 않는다. 이미 있는 컴포넌트를 클래스로만 쓴다:
+  - B 쟁점: `.verdict` `.facts` `.views` `.commentary` `.pull` `.tldr`
+  - A 상세: `.impact`(높음은 `.impact high` 앰버 톤) `.diff` `.callout` `.impl` `.eff`
+  - A 지도: `.wrap.wide` `.impact-summary` `.amend-table`
+  - 공용: `.grounds` `.src-link` `.notice`
 - 새 페이지는 같은 유형의 기존 페이지를 복제한 뒤 본문 HTML만 교체한다.
 
 ## SEO 규칙
@@ -48,15 +52,17 @@ https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=N
 - 슬러그는 영문: `/issues/[slug]`, `/amendments/k[번호]`.
 
 ## 파일 규칙
-- `shared.css` — 콘텐츠 페이지(A/B) 공용 스타일. 디자인 토큰·컴포넌트가 모두 여기 있다. **A/B 새 페이지는 반드시 이걸 링크한다.**
-- 콘텐츠 페이지: `kifrs1118-[slug].html` (본문 HTML만, 인라인 CSS 금지).
-- `kifrs1118-home.html` — 홈. 단 하나뿐이라 CSS를 인라인으로 둔다(공유 이득 없음).
-- 배포 시 경로: 하위 폴더 구조(`/issues/...`)로 가면 링크를 `href="/shared.css"`(루트 절대경로)로 바꾼다. Next.js 이전 시 전역 import로 교체.
+배포 구조는 **하위폴더로 확정**됐다(평면 아님).
+- `shared.css` — 콘텐츠 페이지(A/B) 공용 스타일. 디자인 토큰·컴포넌트가 모두 여기 있다. **A/B 새 페이지는 반드시 `/shared.css`로 링크한다.**
+- `issues/[slug].html` — B 쟁점 페이지. `amendments/k[번호].html` — A 개정 상세.
+- `amendments/index.html` — A 개정 지도(= `/amendments` 인덱스 겸용). **루트의 `amendments-map.html`이 아니다** — `amendments/` 디렉터리가 있으면 Vercel이 그 경로를 파일시스템으로 먼저 처리해서 `vercel.json` 리라이트가 안 먹고 404가 난다.
+- `kifrs1118-home.html` — 홈. 단 하나뿐이라 CSS를 인라인으로 둔다(공유 이득 없음). `vercel.json`이 `/`를 여기로 리라이트한다.
+- 본문 HTML만 작성, 인라인 CSS 금지. Next.js 이전 시 shared.css는 전역 import로 교체.
 
 ## 페이지 유형 템플릿
-- `B 쟁점 페이지` → 스킬 `kifrs-issue-page`. 기준 파일: `kifrs1118-customer-financing-interest.html`
-- `A 개정 지도(전체 1장)` → 스킬 `kifrs-amendment-map`. 마스터 소스 하나에서 영향도 표로 요약. `/amendments` 인덱스 겸용.
-- `A 개정 상세(실질 소수)` → 스킬 `kifrs-amendment-page`. 실질 개정 기준서만. 기준 파일: `kifrs1118-amendment-1115.html`
+- `B 쟁점 페이지` → 스킬 `kifrs-issue-page`. 기준 파일: `issues/customer-financing-interest.html`
+- `A 개정 지도(전체 1장)` → 스킬 `kifrs-amendment-map`. 마스터 소스 하나에서 영향도 표로 요약. 산출물: `amendments/index.html`
+- `A 개정 상세(실질 소수)` → 스킬 `kifrs-amendment-page`. 실질 개정 기준서만. 기준 파일: `amendments/k1115.html`(가벼운 예) 또는 `amendments/k1007.html`(실질 개정 예)
 
 ## 소스 (sources/)
 - `sources/1118-consequential-amendments.txt` — 1118호 제정에 따른 타 기준서 개정 **전체 신구대조본**. **A의 유일한 마스터 소스.** (기준서를 하나씩 뒤지지 않는다)
