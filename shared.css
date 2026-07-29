@@ -21,6 +21,8 @@ body{
 .skip{position:absolute; left:-9999px; top:0; background:var(--ink); color:#fff; padding:10px 16px; z-index:10; border-radius:0 0 8px 0;}
 .skip:focus{left:0;}
 .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+/* 표처럼 넓은 콘텐츠 전용 — 본문 760px 밖으로 넓힌다 */
+.wrap.wide{max-width:1180px;}
 a{color:var(--accent); text-decoration:none;}
 a:hover{text-decoration:underline; text-underline-offset:3px;}
 a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:2px;}
@@ -129,14 +131,14 @@ ul.impl li b{color:var(--ink); font-weight:500;}
 .impact-summary .stat .lbl{font-size:13px; color:var(--muted);}
 
 .table-scroll{overflow-x:auto; -webkit-overflow-scrolling:touch; margin-top:6px; border:1px solid var(--line); border-radius:14px;}
-.amend-table{width:100%; min-width:940px; border-collapse:collapse; font-size:14.5px; background:var(--surface);}
+.amend-table{width:100%; min-width:920px; border-collapse:collapse; font-size:14.5px; background:var(--surface);}
 .amend-table th{text-align:left; font-size:11.5px; font-weight:600; letter-spacing:0.06em; color:var(--muted); padding:10px 14px; border-bottom:1px solid var(--line); white-space:nowrap;}
 .amend-table td{padding:14px; border-bottom:1px solid var(--line-soft); vertical-align:top; color:var(--ink-soft);}
 .amend-table tr:last-child td{border-bottom:none;}
 .amend-table tr.sev-high td{background:var(--accent-tint);}
 .amend-table td.std{color:var(--ink); font-weight:500; min-width:132px;}
 .amend-table .sub-name{display:block; margin-top:2px; font-size:12.5px; font-weight:400; color:var(--muted);}
-.amend-table td.gist{min-width:330px; line-height:1.62;}
+.amend-table td.gist{min-width:360px; line-height:1.62;}
 .amend-table td.paras{font-family:"JetBrains Mono",monospace; font-size:11.5px; color:var(--muted); line-height:1.55; min-width:180px;}
 .amend-table .sev{display:inline-block; font-family:"JetBrains Mono",monospace; font-size:11px; font-weight:600; padding:2px 9px; border-radius:100px; white-space:nowrap;}
 .amend-table .sev.low{color:var(--slate); background:var(--slate-tint);}
