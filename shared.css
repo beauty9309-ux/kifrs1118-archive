@@ -95,6 +95,10 @@ code.para{font-family:"JetBrains Mono",monospace; font-size:13px; font-weight:60
 .scale span.on{color:var(--accent-ink); background:var(--accent-tint); border-color:#BFE0D2;}
 .impact .txt{font-family:"Noto Serif KR",serif; font-size:20px; font-weight:600; color:var(--accent-ink); line-height:1.5;}
 .impact .note{font-size:14px; color:var(--ink-soft); margin-top:8px;}
+/* 영향도 '중간' — 실질이지만 영향 범위가 한정된 개정 */
+.impact.mid{background:var(--slate-tint); border-color:#D9DEE7;}
+.impact.mid .lbl, .impact.mid .txt{color:var(--slate);}
+.impact.mid .scale span.on{color:var(--slate); background:#fff; border-color:#D9DEE7;}
 /* 영향도 '높음' — 실질 개정 페이지용 경고 톤 */
 .impact.high{background:var(--amber-tint); border-color:#E8D5AE;}
 .impact.high .lbl, .impact.high .txt{color:var(--amber-ink);}
