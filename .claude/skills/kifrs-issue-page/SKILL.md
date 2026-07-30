@@ -16,11 +16,12 @@ description: "K-IFRS 제1118호와 관련된 실무 쟁점 한 건을 'B 쟁점 
 2. **견해 추출.** 갑설·을설(·병설)의 논리와 각 근거 문단을 원문에서 뽑는다.
 3. **결론 확인.** 위원 다수/소수 의견, 채택된 견해를 원문에서 확인한다. 결론이 유보면 유보라고 쓴다.
 4. **핵심 해설 작성(가장 중요).** 결론이 왜 그렇게 났는지, 어느 문단의 관계에서 갈렸는지를 회계사 관점에서 쉽게 풀어쓴다. (예: "B37은 판단 단위, 실제 갈림길은 B40")
-5. **템플릿 채우기.** 기준 파일 `kifrs1118-customer-financing-interest.html` 을 복제해 내용만 교체한다. CSS는 `shared.css` 링크 그대로 두고 새로 만들지 않는다.
-6. **자가 점검.** 문단 전문 복제 없음 / 근거 문단·회계기준원 링크 포함 / 반응형·접근성 / 하단 고지.
+5. **템플릿 채우기.** 기준 파일 `issues/customer-financing-interest.html` 을 복제해 내용만 교체한다. CSS는 `/shared.css` 링크 그대로 두고 새로 만들지 않는다.
+6. **자가 점검.** `node check-copyright.js <파일>` 통과 / 근거 문단·회계기준원 링크 포함 / 반응형·접근성 / 하단 고지.
+7. **마무리 연결** — 아래 체크리스트를 빠뜨리지 말 것.
 
 ## 페이지 구조 (순서 고정)
-1. 헤더 + breadcrumb(`쟁점 아카이브 > [주제] > [쟁점]`)
+1. 헤더 + breadcrumb(`쟁점 해설 > [쟁점]`) — **주제(topic) 계층을 넣지 않는다.** `/topics/...` 는 초기 템플릿 잔재이며 그런 페이지는 만들지 않는다(A/B 두 축만).
 2. eyebrow(주제·소주제) + H1(질문형) + dek(한 줄 상황 요약) + 출처 태그(+회계기준원 링크)
 3. **결론 배너**(`.verdict`) — 다수의견/채택된 견해 한 줄
 4. `현황`(`.facts`) — 상황을 짧은 줄들로. 범주 표시는 `.cat.op`(영업)/`.cat.inv`(투자)
@@ -35,9 +36,21 @@ description: "K-IFRS 제1118호와 관련된 실무 쟁점 한 건을 'B 쟁점 
 - TF 논의내용은 요약·해설하되 출처(회의 회차·일자)를 표기한다.
 
 ## 출력
-- `/issues/[slug].html` (예: `customer-financing-interest`). 정적 단계 파일명 `kifrs1118-[slug].html`.
-- 완료 후 홈(`kifrs1118-home.html`)의 `최근 업데이트` 피드에 항목 1줄 추가.
+- `issues/[slug].html` (예: `issues/customer-financing-interest.html`). 슬러그는 영문.
+
+## 마무리 연결 (셋 다 해야 완료다)
+- [ ] **쟁점 인덱스** `issues/index.html` 의 `쟁점 목록`에 항목 1줄 추가. 이미 '작성 중' placeholder 행이 있으면 링크된 행으로 교체한다.
+- [ ] **홈 피드** `kifrs1118-home.html` 의 `최근 업데이트` 맨 위에 1줄 추가. 같은 주제의 '작성 중/예정' 행이 남아 있으면 지운다.
+- [ ] **`sitemap.xml` 에 `<url>` 블록 추가** — 자동 생성이 아니다. 빠뜨리면 새 페이지가 색인되지 않는다.
+  ```xml
+  <url>
+    <loc>https://kifrs1118-archive.vercel.app/issues/[slug]</loc>
+    <lastmod>YYYY-MM-DD</lastmod>
+  </url>
+  ```
+- 판정이 A축 개정과 이어지면 상호링크한다(예: '주된 사업활동' 판정 → `/amendments/k1007`).
 
 ## SEO
 - `<title>`: `[쟁점 질문] — K-IFRS 제1118호 쟁점`
 - JSON-LD `Article` + `BreadcrumbList`, `canonical`, `lang="ko"`.
+- `canonical`·`og:url` 도메인은 **`https://kifrs1118-archive.vercel.app`** 를 쓴다. `your-domain.com` 같은 placeholder를 남기지 않는다 — 잘못된 canonical은 사이트 전체를 색인에서 밀어낸다.

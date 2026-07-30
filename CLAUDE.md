@@ -48,8 +48,16 @@ https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=N
 ## SEO 규칙
 - `<title>`: `[핵심 주제] — K-IFRS 제1118호` 패턴.
 - `meta description`, Open Graph, `canonical`, `lang="ko"` 필수.
-- JSON-LD: 콘텐츠는 `Article`, 경로는 `BreadcrumbList`.
+- JSON-LD: 콘텐츠는 `Article`, 경로는 `BreadcrumbList`. 목록 페이지는 `CollectionPage`, 소개는 `AboutPage`.
 - 슬러그는 영문: `/issues/[slug]`, `/amendments/k[번호]`.
+- **도메인은 `https://kifrs1118-archive.vercel.app`** (Vercel 기본). `canonical`·`og:url`·JSON-LD `item`에 placeholder를 남기지 않는다.
+
+## 운영 규칙 — 조용히 깨지는 것들 (Search Console 등록 이후)
+검색 색인은 실패해도 에러가 안 뜬다. 아래 셋은 눈에 안 보이게 망가지므로 규칙으로 지킨다.
+
+1. **`google-site-verification` meta 태그를 지우지 않는다.** `kifrs1118-home.html`의 `<head>`에 있고, 지우면 Search Console 소유권이 해제된다. **홈 리팩터링·Next.js 이전 때 head를 옮길 경우 이 태그가 따라갔는지 반드시 확인한다.**
+2. **`sitemap.xml`은 수동 관리다.** 페이지를 추가하면 `<url>` 블록을 직접 넣는다(스킬의 '마무리 연결' 체크리스트에 포함). 빠뜨리면 새 페이지가 색인되지 않는다.
+3. **색인된 URL의 경로를 바꾸지 않는다.** 바꿔야 하면 `vercel.json`에 301 리다이렉트를 함께 넣는다. 커스텀 도메인으로 이전할 때는 301 + Search Console 새 속성 등록 + sitemap 재제출이 한 묶음이다.
 
 ## 파일 규칙
 배포 구조는 **하위폴더로 확정**됐다(평면 아님).

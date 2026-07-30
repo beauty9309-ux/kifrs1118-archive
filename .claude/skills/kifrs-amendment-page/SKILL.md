@@ -64,8 +64,18 @@ description: "1118호 때문에 '실질' 개정된 소수 기준서 한 건을 A
 ## 페이지 구조 (순서 고정)
 헤더+breadcrumb → eyebrow+H1+dek(결론 먼저)+출처 → 개정 영향도 배너 → 무엇이 바뀌었나(변경 전→후) → **확인이 더 필요한 문단**(있을 때만) → 왜 바뀌었나(1118호와의 연결) → 실무 시사점 → 시행(2027.1.1 이후 최초 회계연도, 조기적용 가능) → 근거 문단 → 출처·저작권·면책.
 
-## 마무리 연결 (빠뜨리기 쉬움)
-- 개정 지도 `amendments/index.html`의 해당 행:
+## 마무리 연결 (넷 다 해야 완료다)
+- [ ] **개정 지도** `amendments/index.html`의 해당 행:
   `<td class="link soon">상세 예정</td>` → `<td class="link"><a href="/amendments/kXXXX">상세 →</a></td>`
-- 홈 피드에 1줄 추가하고, **같은 주제의 '예정' placeholder 행이 남아 있으면 지우거나 다음 대상으로 교체**한다(같은 항목이 두 번 노출되는 것을 막는다).
-- 판정이 B축 쟁점과 이어지면 상호링크한다. (예: 1007호 34B의 '주된 사업활동' 판정 → `/issues/customer-financing-interest`)
+- [ ] **홈 피드**에 1줄 추가하고, **같은 주제의 '예정' placeholder 행이 남아 있으면 지우거나 다음 대상으로 교체**한다(같은 항목이 두 번 노출되는 것을 막는다). 다음 대상이 없으면 placeholder 행 자체를 없앤다.
+- [ ] **`sitemap.xml` 에 `<url>` 블록 추가** — 자동 생성이 아니다. 빠뜨리면 새 페이지가 색인되지 않는다.
+  ```xml
+  <url>
+    <loc>https://kifrs1118-archive.vercel.app/amendments/kXXXX</loc>
+    <lastmod>YYYY-MM-DD</lastmod>
+  </url>
+  ```
+- [ ] 판정이 B축 쟁점이나 다른 개정 상세와 이어지면 **상호링크**한다(예: 1007호 34B의 '주된 사업활동' → `/issues/customer-financing-interest`, MPM → `/amendments/k1033`↔`/amendments/k1034`).
+
+## SEO
+- `canonical`·`og:url` 도메인은 **`https://kifrs1118-archive.vercel.app`** 를 쓴다. placeholder를 남기지 않는다 — 잘못된 canonical은 사이트 전체를 색인에서 밀어낸다.
