@@ -67,6 +67,7 @@ code.para{font-family:"JetBrains Mono",monospace; font-size:13px; font-weight:60
 .facts .cat{font-family:"JetBrains Mono",monospace; font-size:12px; font-weight:600; padding:2px 8px; border-radius:100px; margin-left:2px; vertical-align:1px;}
 .cat.op{color:var(--amber-ink); background:var(--amber-tint);}
 .cat.inv{color:var(--accent-ink); background:var(--accent-tint);}
+.cat.fin{color:var(--slate); background:var(--slate-tint);}
 
 .views{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:18px;}
 /* 견해가 3개 이상이면 2단이 좁다 — 세로로 쌓는다 */
