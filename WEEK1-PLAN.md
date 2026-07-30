@@ -68,16 +68,26 @@
 
 ---
 
-## 4-1. A 파트 끝난 뒤 일괄 정리 (보류 — 2026.7.29 결정)
+## 4-1. A 파트 끝난 뒤 일괄 정리 — ✅ 2026.7.30 완료
 
-A 실질 상세 3건(1033·1034·1101)을 마친 뒤 아래를 **한 번에** 처리한다. 그 전에는 손대지 않는다.
+- [x] **canonical·og:url 도메인 교체** — 11개 페이지 전부 `https://kifrs1118-archive.vercel.app`로. 배포본을 먼저 조회해 도메인 실재 확인 후 적용.
+- [x] **`/issues` 인덱스 생성** — `issues/index.html`. (Day 1에 건너뛴 항목)
+- [x] **`/topics/pl-categories` 링크 제거** — breadcrumb과 BreadcrumbList 양쪽에서 제거. topic 계층은 만들지 않는다(A/B 두 축만).
+- [x] **`/about`** — `about.html` 1차 버전 작성. **작성자 소개 문단은 비워 뒀다** — 본인이 직접 추가할 것.
+- [x] **`sitemap.xml` · `robots.txt`** — 11개 URL 등록. `sources/`는 색인 제외이며 git 미추적이라 배포에도 포함되지 않는다.
+- [ ] **Search Console 등록** — 남은 항목. 위가 전부 끝났으므로 지금 가능하다.
 
-- [ ] **canonical·og:url 도메인 교체** — 현재 6개 페이지 전부 `https://your-domain.com` placeholder. Vercel 기본 도메인으로 교체하되 정확한 주소는 대시보드에서 확인(프로젝트명 `kifrs1118-archive`). **404보다 우선순위가 높다** — 잘못된 canonical은 해당 페이지가 아니라 사이트 전체를 색인에서 밀어낸다.
-- [ ] **`/issues` 인덱스 생성** — 원래 Day 1 항목인데 건너뛰었다. 홈 메인 nav·B축 카드·쟁점 페이지 breadcrumb **3곳이 404**다.
-- [ ] **`/topics/pl-categories` 링크 제거** — 초기 템플릿 잔재. topic 계층은 만들지 않는다(A/B 두 축만). `issues/customer-financing-interest.html`의 breadcrumb과 BreadcrumbList JSON-LD **양쪽에서** 뺀다.
-- [ ] **`/about`** — Day 6 계획대로. 그때까지 홈 nav 링크를 빼두거나 함께 만든다.
-- [ ] **`sitemap.xml` · `robots.txt`** — 도메인 확정 후 생성. `sources/`는 색인 제외.
-- [ ] **Search Console 등록** — 위가 전부 끝난 뒤에.
+> 검증: 내부 링크 11개·sitemap 11개 전부 실제 파일로 해소 확인. 깨진 링크 0건.
+
+---
+
+## 4-2. 다음 할 일
+
+- [ ] **Search Console 등록** — `sitemap.xml` 제출.
+- [ ] **`/about`에 작성자 소개 추가** — 내 이력·검증 주체를 밝히는 문단. AI가 지어낼 수 없어 비워 둔 자리다.
+- [ ] **B축 확대** — 보험회사 대출활동 쟁점(작성 중), 그 외 TF·질의회신 쟁점. **여기가 진짜 가치의 축이다.**
+- [ ] (선택) 1118호 개요 페이지 — Day 5 항목.
+- [ ] (선택) 커스텀 도메인 확보 시 canonical·og:url·sitemap 일괄 재교체 + 301 리다이렉트.
 
 ---
 
