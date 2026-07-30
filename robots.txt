@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# 작업용 원문 자료 — 색인 제외 (배포에도 포함되지 않음)
+Disallow: /sources/
+
+Sitemap: https://kifrs1118-archive.vercel.app/sitemap.xml
