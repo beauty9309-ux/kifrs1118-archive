@@ -158,6 +158,14 @@ ul.impl li b{color:var(--ink); font-weight:500;}
 .amend-table td.link a{font-size:13px;}
 .amend-table td.link.soon{font-size:13px; color:var(--muted);}
 
+/* ── 작성자 소개 ───────────── */
+.author{display:grid; grid-template-columns:96px 1fr; gap:24px; align-items:start; margin-top:18px;}
+.author .photo{width:96px; height:96px; border-radius:50%; object-fit:cover; display:block; border:1px solid var(--line); background:var(--paper);}
+.author .name{font-family:"Noto Serif KR",serif; font-size:19px; font-weight:600; color:var(--ink); margin:0 0 3px;}
+.author .role{font-family:"JetBrains Mono",monospace; font-size:12px; font-weight:600; letter-spacing:0.02em; color:var(--accent); margin:0 0 14px;}
+.author p{font-size:15px; color:var(--ink-soft); line-height:1.72; margin:0 0 12px;}
+.author p:last-child{margin-bottom:0;}
+
 /* ── 목록 피드 (쟁점 인덱스 등) ───────────── */
 .feed{display:flex; flex-direction:column;}
 .item{
@@ -206,6 +214,7 @@ footer .mark{font-family:"JetBrains Mono",monospace; font-weight:600; color:var(
   .ground{grid-template-columns:76px 1fr; gap:12px;}
   .item{grid-template-columns:auto 1fr;}
   .item .meta{grid-column:2;}
+  .author{grid-template-columns:1fr; gap:16px;}
 }
 @media (prefers-reduced-motion:no-preference){
   main .eyebrow,main h1,main .dek,main .source,main .verdict,main .impact{animation:rise .5s ease both;}
