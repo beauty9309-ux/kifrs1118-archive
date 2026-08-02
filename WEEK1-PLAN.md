@@ -8,9 +8,9 @@
 
 ---
 
-## 1. 시작 전 준비 (Day 0 · 약 30분)
+## 1. 시작 전 준비 (Day 0 · 약 30분) — ✅ 전부 완료 (2026.8.3 확인)
 
-- [ ] 저장소에 파일 배치:
+- [x] 저장소에 파일 배치:
   ```
   /  CLAUDE.md  shared.css  kifrs1118-home.html  kifrs1118-*.html  check-copyright.js
   /sources/  1118-consequential-amendments.txt  tf-3rd-meeting.txt  standards/
@@ -19,11 +19,12 @@
   /.claude/skills/kifrs-amendment-page/SKILL.md
   /.githooks/pre-commit
   ```
-- [ ] **`sources/`는 작업용 — 배포/공개에서 제외**(`.gitignore` 또는 배포 ignore). 공개되는 건 요약·해설 페이지지 원문 덤프가 아니다.
-- [ ] 훅 켜기: `chmod +x .githooks/pre-commit && git config core.hooksPath .githooks`
-- [ ] Claude Code를 **저장소 루트**에서 열고 `/memory` 로 CLAUDE.md·스킬 로드 확인.
-- [ ] Vercel 연결 — 콘텐츠가 적어도 파이프라인부터 살려둔다(배포하며 작업).
-- [ ] 배포 구조 결정: **평면**(파일 그대로) vs **하위폴더**(`/issues`, `/amendments`). 하위폴더로 가면 각 페이지의 `href="shared.css"` 를 `href="/shared.css"` 로 바꾼다.
+- [x] **`sources/`는 작업용 — 배포/공개에서 제외**(`.gitignore` 또는 배포 ignore). 공개되는 건 요약·해설 페이지지 원문 덤프가 아니다.
+- [x] 훅 켜기: `chmod +x .githooks/pre-commit && git config core.hooksPath .githooks` — 커밋마다 실제 작동 확인.
+- [x] Claude Code를 **저장소 루트**에서 열고 `/memory` 로 CLAUDE.md·스킬 로드 확인.
+- [x] Vercel 연결 — 콘텐츠가 적어도 파이프라인부터 살려둔다(배포하며 작업).
+- [x] 배포 구조 결정 → **하위폴더 확정**(`/issues`, `/amendments`). 모든 페이지가 `href="/shared.css"` 절대경로를 쓴다(상대경로 잔존 0건).
+  - **이유:** `amendments/` 디렉터리가 있으면 Vercel이 그 경로를 파일시스템으로 먼저 처리해 `vercel.json` 리라이트가 무시되고 404가 난다. 그래서 인덱스는 `amendments/index.html`·`issues/index.html`이다(루트의 `amendments-map.html`이 **아니다**).
 
 ---
 
@@ -74,16 +75,17 @@
 - [x] **`/issues` 인덱스 생성** — `issues/index.html`. (Day 1에 건너뛴 항목)
 - [x] **`/topics/pl-categories` 링크 제거** — breadcrumb과 BreadcrumbList 양쪽에서 제거. topic 계층은 만들지 않는다(A/B 두 축만).
 - [x] **`/about`** — `about.html` 1차 버전 작성. **작성자 소개 문단은 비워 뒀다** — 본인이 직접 추가할 것.
-- [x] **`sitemap.xml` · `robots.txt`** — 11개 URL 등록. `sources/`는 색인 제외이며 git 미추적이라 배포에도 포함되지 않는다.
-- [ ] **Search Console 등록** — 남은 항목. 위가 전부 끝났으므로 지금 가능하다.
+- [x] **`sitemap.xml` · `robots.txt`** — 작성 당시 11개 URL 등록. `sources/`는 색인 제외이며 git 미추적이라 배포에도 포함되지 않는다. **현재는 24개 URL**(페이지 추가 시 수동 갱신).
+- [x] **Search Console 등록** — 소유권 확인(홈 `google-site-verification` meta) + `sitemap.xml` 제출 완료. **색인 요청은 §4-2에서 별도 관리.**
 
-> 검증: 내부 링크 11개·sitemap 11개 전부 실제 파일로 해소 확인. 깨진 링크 0건.
+> 검증: 작성 당시 내부 링크·sitemap 11개 전부 해소 확인. **2026.8.3 전체 QA 재실행** — 페이지 24개, 깨진 내부 링크 0건, 이미지 alt 누락 0건, 메타·구조 결함 0건, JSON-LD 47블록 전부 유효, `check-copyright.js` 전수 통과.
 
 ---
 
 ## 4-2. 다음 할 일
 
-- [ ] **Search Console 등록** — `sitemap.xml` 제출.
+- [ ] **색인 생성 요청** — Search Console 「URL 검사」에서 하루 10~12건 한도. 우선순위: `/about` → `/issues/faultlines` → `/issues`. 할당량은 태평양 자정(한국 오후 4~5시경) 초기화.
+  - 사이트맵 상태가 「가져올 수 없음」으로 보여도 무시한다. 판단 기준은 **「페이지」 리포트의 색인된 페이지 수**다.
 - [x] **`/about`에 작성자 소개 추가** — 실명·사진·이력 반영. 사진은 `assets/author.jpg`(512×512). JSON-LD `Person`을 두고 22개 페이지의 `author`가 `@id`로 참조한다.
 - [ ] **2차 결과 발표 후 소개 갱신** — `about.html`의 이름 아래 직함 줄("공인회계사 2차 시험 응시 · 결과 대기")과 본문 첫 문단, 그리고 같은 파일의 JSON-LD `Person` `description`을 함께 고친다. **합격 전에는 '공인회계사'로 표기하지 않는다.**
 - [ ] **B축 확대** — 보험회사 대출활동 쟁점(작성 중), 그 외 TF·질의회신 쟁점. **여기가 진짜 가치의 축이다.**
@@ -96,6 +98,10 @@
 
 > 프롬프트는 짧게 유지한다 — 규칙·디자인·절차는 `CLAUDE.md`와 스킬이 이미 갖고 있다. (토큰 절약)
 
+> **파일명 주의(2026.8.3 정정):** 아래 프롬프트는 초기 평면 구조 기준으로 쓰였다. 실제 배포 구조는 **하위폴더**이므로 경로가 다르다.
+> `issues-index.html` → **`issues/index.html`** · `amendments-map.html` → **`amendments/index.html`** · `kifrs1118-*.html`(콘텐츠) → **`issues/[slug].html`·`amendments/k[번호].html`**.
+> 그대로 복붙하면 엉뚱한 위치에 파일이 생긴다.
+
 ### 5-1a. A 개정 지도 (전체 1장) — Day 2
 ```
 kifrs-amendment-map 스킬로 1118호 개정 지도(전체 1장)를 만들어줘.
@@ -104,7 +110,7 @@ kifrs-amendment-map 스킬로 1118호 개정 지도(전체 1장)를 만들어줘
  - 경미(용어·참조·명칭 정비): 표에 요지만, 별도 페이지 없음.
  - 실질(표시·측정·공시 로직 변경): 표에 표시하고 상세 페이지로 링크(나중에).
 마스터만으로 불분명하면 '확인 필요'로 두고 지어내지 마.
-shared.css 링크, amendments-map.html (=/amendments 인덱스 겸용). 끝나면 check-copyright.js.
+shared.css 링크, amendments/index.html (=/amendments 인덱스 겸용). 끝나면 check-copyright.js.
 ```
 
 ### 5-1b. A 개정 상세 (실질 소수) — Day 3
@@ -113,7 +119,7 @@ kifrs-amendment-page 스킬로 제[번호]호 개정 상세 페이지를 만들�
 소스는 sources/1118-consequential-amendments.txt 의 '제[번호]호' 섹션(기준서를 따로 뒤지지 마).
 섹션 끝 개정 근거 문단에서 바뀐 문단을 뽑고, 신구대조(앞=신/뒤=구)로 변경 내용을 읽어.
 문단별로 '확정 가능 / 대조본 확인 필요'를 나누고, 불분명하면 지어내지 마.
-영향도(중간/높음) 판정 후 kifrs1118-amendment-1115.html 복제·본문 교체(shared.css 유지).
+영향도(중간/높음) 판정 후 amendments/k1115.html 복제·본문 교체(shared.css 유지).
 번호+요지만(BC·적용사례·소수의견은 요약만), 원문은 회계기준원 링크.
 끝나면 check-copyright.js + 개정 지도 표의 해당 행 링크 + 홈 피드 1줄.
 ```
@@ -124,15 +130,15 @@ kifrs-issue-page 스킬로 [쟁점명] 쟁점 해설 페이지를 만들어줘.
 소스는 sources/tf-3rd-meeting.txt (또는 해당 회의 회차·일자 원문).
 쟁점을 한 문장으로 정의하고, 갑설·을설(·병설)과 각 근거 문단, 결론(다수/소수)을 뽑아.
 '왜 그 결론인지, 어느 문단 관계에서 갈렸는지'를 핵심 해설로 쉽게 풀어줘.
-kifrs1118-customer-financing-interest.html 을 복제해 본문만 교체하고 shared.css는 그대로.
+issues/customer-financing-interest.html 을 복제해 본문만 교체하고 shared.css는 그대로.
 문단 전문 복제 금지(번호+요지), 원문은 회계기준원 링크.
 끝나면 check-copyright.js 검사 + 홈 피드·쟁점 인덱스에 1줄씩 추가.
 ``` 
 
 ### 5-3. 쟁점 인덱스 페이지 — Day 1
 ```
-쟁점 인덱스 페이지(issues-index.html)를 만들어줘.
-(개정은 amendments-map.html 이 /amendments 인덱스를 겸하므로 개정 인덱스는 따로 안 만든다.)
+쟁점 인덱스 페이지(issues/index.html)를 만들어줘.
+(개정은 amendments/index.html 이 /amendments 인덱스를 겸하므로 개정 인덱스는 따로 안 만든다.)
 - shared.css를 링크하고 홈/콘텐츠 페이지와 같은 디자인 언어로.
 - 각 항목: 제목 + 카테고리(쟁점) + 날짜 + 링크. 존재하는 페이지만, 추가 시 한 줄씩.
 - lang="ko", title·description·canonical 포함.
