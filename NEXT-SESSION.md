@@ -3,6 +3,7 @@
 WEEK1-PLAN의 남은 항목 ②③을 바로 시작할 수 있게 정리한 문서. **먼저 A를 5분 안에 끝내고 B로 넘어간다.**
 
 현재 상태: 배포 라이브, 페이지 24개, QA 결함 0건, 미커밋 없음.
+**검증 진행: 20건 중 8건 완료(2026.8.3).** 남은 12건은 아래 B의 표에서 '미검증'으로 표시돼 있다.
 
 ---
 
@@ -46,22 +47,22 @@ WEEK1-PLAN §6 마지막 줄과 §8("내가 검증하지 못한 페이지는 올
 
 ### B축 쟁점 14건
 
-| # | 페이지 | 소스 (줄) | 특히 볼 곳 |
+| # | 페이지 | 소스 (줄) | 상태 |
 |---|---|---|---|
-| 1 | `issues/consolidated-investment-category` | `tf-kickoff-meeting.txt` 17~ | 갑설=대안1, 을설=대안2 대응이 맞는지 |
-| 2 | `issues/disposal-receivable-impairment` | `tf-1st-meeting.txt` 37~ | ⚠ "갑설과 소수의견은 유형자산 미수금에서 결론이 같다"는 지적은 **소스에 없는 종합** |
-| 3 | `issues/fx-payable-translation-category` | `tf-1st-meeting.txt` 235~ | 유보 표기가 과하지 않은지. ⚠ "본문이 열려 있어 BC가 여백을 설명한다"는 해석 |
-| 4 | `issues/early-adoption-interim-statements` | `tf-1st-meeting.txt` 444~ | ⚠ **문단 1 → 28 정정**(논의자료 오기로 판단해 바로잡음) · ⚠ "1034호가 이미 을설의 경로를 깔아 뒀다"는 해석 |
-| 5 | `issues/lease-deposit-interest` | `tf-1st-meeting.txt` 650~ | 잠정 표기. ⚠ "선급리스료 성격" 강조의 비중 |
-| 6 | `issues/k1001-operating-profit-mpm` | `tf-1st-meeting.txt` 784~ | ⚠ **한132.4 표기**(논의자료의 "한 문단 132.4"를 안건5 현황부로 확인해 정정) · 2030년 이후 MPM 가능 서술 |
-| 7 | `issues/rental-deposit-interest-expense` | `tf-2nd-meeting.txt` 34~ | ⚠ "고객금융이 본업이라 방향이 뒤집힌다"는 65⑴㈎ 설명 |
-| 8 | `issues/developer-loan-category` | `tf-2nd-meeting.txt` 198~ | ⚠ **"대체 가능성"을 구분 기준으로 읽은 부분** — TF 공식 기준이 아니라고 본문에 명시했으나 표현 수위 확인 |
-| 9 | `issues/equipment-rental-income` | `tf-2nd-meeting.txt` 369~ | 사례 3건 결론. EY 매뉴얼 **내용 재수록 없이 인용 사실만** 적었는지 |
-| 10 | `issues/subsidiary-derivative-category` | `tf-2nd-meeting.txt` 653~ | ⚠ "갑설을 따라도 결론이 같아질 수 있다"는 종합 |
-| 11 | `issues/customer-financing-interest` | `tf-3rd-meeting.txt` 39~ | (이번 세션 이전 작성) 전반 |
-| 12 | `issues/insurance-lending-activity` | `tf-3rd-meeting.txt` 155~ | (이번 세션 이전 작성) 병설 결론 표기 |
-| 13 | `issues/fx-borrowing-hedge-interest` | `tf-3rd-meeting.txt` 316~ | (이번 세션 이전 작성) 잠정 표기 |
-| 14 | `issues/faultlines` | — (13건 종합) | ⚠ **문서 전체가 AI의 종합**이다. 단층선 4분류, "금융자산 사안만 흔들린다"는 관찰, 상태표(확정 8·잠정 4·유보 1) 전부 검증 대상 |
+| 1 | `issues/consolidated-investment-category` | `tf-kickoff-meeting.txt` 17~ | **미검증** — 갑설=대안1, 을설=대안2 대응이 맞는지 |
+| 2 | `issues/disposal-receivable-impairment` | `tf-1st-meeting.txt` 37~ | ✅ 2026.8.3 — 겹침은 67~69행+111행으로 성립 확인, 출처 표시 추가 |
+| 3 | `issues/fx-payable-translation-category` | `tf-1st-meeting.txt` 235~ | ✅ 2026.8.3 — 유보 표기 적정. **"헤지" 표현 삭제**(이 사안엔 헤지 지정 없음) |
+| 4 | `issues/early-adoption-interim-statements` | `tf-1st-meeting.txt` 444~ | ✅ 2026.8.3 — 문단 1→28 정정 **맞음**(544·552행). `1034호 28·43` 연결이 을설 논거가 아님을 표시. **한132.5 누락 보완** |
+| 5 | `issues/lease-deposit-interest` | `tf-1st-meeting.txt` 650~ | ✅ 2026.8.3 — 월세 메커니즘 서술에 화자 표시. IFRS IC 제출 시점(2026.6월경) 명시. 8번과 상호링크 |
+| 6 | `issues/k1001-operating-profit-mpm` | `tf-1st-meeting.txt` 784~ | ✅ 2026.8.3 — 한132.4·2030년 서술 **소스 확인**(806·842행). **누락된 `117⑴` 논거 복원**(826행) |
+| 7 | `issues/rental-deposit-interest-expense` | `tf-2nd-meeting.txt` 34~ | ✅ 2026.8.3 — 방향 뒤집힘은 74·88행 근거 있음. `B53` 대비에 화자 표시, 을설/갑설 매핑 완화 |
+| 8 | `issues/developer-loan-category` | `tf-2nd-meeting.txt` 198~ | ✅ 2026.8.3 — **수정 없음**. '대체 가능성'은 248행에 있는 소스 논거였다 |
+| 9 | `issues/equipment-rental-income` | `tf-2nd-meeting.txt` 369~ | **미검증** — 사례 3건 결론. EY 매뉴얼 인용 사실만 적었는지 |
+| 10 | `issues/subsidiary-derivative-category` | `tf-2nd-meeting.txt` 653~ | ✅ 2026.8.3 — 겹침에 출처 표시. `BC227`은 논의 인용이 아니라 참고자료임을 명시 |
+| 11 | `issues/customer-financing-interest` | `tf-3rd-meeting.txt` 39~ | **미검증** — 이번 세션 이전 작성, ⚠ 표시 없음 |
+| 12 | `issues/insurance-lending-activity` | `tf-3rd-meeting.txt` 155~ | **미검증** — 이번 세션 이전 작성, 병설 결론 표기 |
+| 13 | `issues/fx-borrowing-hedge-interest` | `tf-3rd-meeting.txt` 316~ | **미검증** — 이번 세션 이전 작성, 잠정 표기 |
+| 14 | `issues/faultlines` | — (13건 종합) | ✅ 2026.8.3 — 상태표 13행 전부 일치. 대체 가능성 논거의 지위 상향, 승계 규칙·금융자산 관찰의 강도 하향 |
 
 ### A축 개정 6건
 
@@ -84,11 +85,21 @@ WEEK1-PLAN §6 마지막 줄과 §8("내가 검증하지 못한 페이지는 올
 - 고친 뒤에는 `node check-copyright.js <파일>` 재실행
 
 ```
-[ ] 1  [ ] 2  [ ] 3  [ ] 4  [ ] 5  [ ] 6  [ ] 7  [ ] 8  [ ] 9  [ ] 10
-[ ] 11 [ ] 12 [ ] 13 [ ] 14 [ ] 15 [ ] 16 [ ] 17 [ ] 18 [ ] 19 [ ] 20
+[ ] 1  [x] 2  [x] 3  [x] 4  [x] 5  [x] 6  [x] 7  [x] 8  [ ] 9  [x] 10
+[ ] 11 [ ] 12 [ ] 13 [x] 14 [ ] 15 [ ] 16 [ ] 17 [ ] 18 [ ] 19 [ ] 20
 ```
 
-> 한 번에 다 하지 않아도 된다. **⚠ 표시가 있는 7건(2·3·4·5·6·7·8·10·14)을 먼저** 보는 편이 효율적이다.
+**진행: 8/20 완료 (2026.8.3).** ⚠ 표시가 있던 것은 전부 봤다. 남은 12건은 ⚠ 없이 처음부터 대조해야 한다.
+
+### 1차 검증에서 배운 것 — 남은 12건에 그대로 쓸 것
+
+8건을 보는 동안 **결론·다수소수·문단번호가 틀린 적은 한 번도 없었다.** 그러니 거기에 시간을 많이 쓰지 말고, 아래 세 가지를 의심하는 편이 빠르다.
+
+1. **경계 미표시**(6건으로 가장 많았다) — 소스에 없는 종합이 회의록과 같은 목소리로 적혀 있는 경우. "결국 ~인 셈", "즉 ~이다"로 이어지는 정리 문장을 의심한다.
+2. **없는 단어 삽입**(2건) — 그 사안에 존재하지 않는 개념어. '헤지', 특정 거래 메커니즘 등. **소스에 없는 명사**를 찾는다.
+3. **누락**(2건) — 소스가 두 갈래로 논증하는데 페이지가 한 갈래만 옮긴 경우. 갑설·을설 박스가 소스보다 짧으면 의심한다.
+
+> 반대 방향도 있었다. `faultlines`는 소스에 있는 논거를 "소스에 없다"고 낮춰 적어 두었다. **근거의 지위를 실제보다 낮추는 것도 부정확이다.**
 
 ---
 
