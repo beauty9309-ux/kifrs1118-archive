@@ -134,6 +134,23 @@
   .pager button[disabled]{opacity:.38; cursor:default;}
   .pager .nav{font-family:"Noto Sans KR",sans-serif; font-weight:500;}
   .pager .count{font-size:12.5px; color:var(--muted); margin-left:auto;}
+  .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0;}
+  .search{margin:0 0 24px; max-width:60ch;}
+  .search input{
+    width:100%; box-sizing:border-box; font-family:inherit; font-size:15.5px; color:var(--ink);
+    padding:13px 16px; border:1px solid var(--line); border-radius:11px; background:var(--surface);
+    transition:border-color .15s, box-shadow .15s;
+  }
+  .search input::placeholder{color:var(--muted); font-size:14.5px;}
+  .search input:focus{outline:none; border-color:var(--accent); box-shadow:0 0 0 3px var(--accent-tint);}
+  #results{margin:0 0 8px;}
+  #results .s-count{font-size:13px; color:var(--muted); margin:0 0 4px;}
+  #results .s-none{font-size:15px; color:var(--ink-soft); line-height:1.7; padding:18px 0; margin:0;}
+  #results .item{grid-template-columns:auto 1fr auto;}
+  #results .s-snip{
+    grid-column:1 / -1; font-size:14px; color:var(--muted); line-height:1.65; margin:6px 0 0;
+  }
+  #results mark{background:var(--accent-tint); color:var(--accent-ink); font-weight:500; padding:0 2px; border-radius:3px;}
 
   /* About */
   .about p{font-size:16px; color:var(--ink-soft); line-height:1.72; margin:0 0 14px; max-width:64ch;}
@@ -183,6 +200,13 @@
       <p class="eyebrow">K-IFRS 제1118호 · 재무제표 표시와 공시</p>
       <h1>1118호,<br />바뀐 것과 애매한 것.</h1>
       <p class="dek">회계기준원 공개자료를 근거로 K-IFRS 제1118호를 정리합니다. <b>어떤 기준서가 왜 바뀌었는지</b>, 그리고 <b>실무에서 무엇이 다투어지는지</b> — 딱 두 축으로.</p>
+      <form class="search" role="search" onsubmit="return false;">
+        <label class="sr-only" for="q">글 검색</label>
+        <input id="q" type="search" autocomplete="off"
+               placeholder="제목·본문·문단번호로 찾기 — 예: 임차보증금, B40, 주된 사업활동" />
+      </form>
+      <div id="results" hidden data-hide="#recent, .hero-cta"></div>
+
       <div class="hero-cta">
         <p class="stage">이제 막 시작한 아카이브예요. 회계기준원 자료를 하나씩, 함께 정리해 갑니다.</p>
         <a class="cta" href="#recent">지금까지 정리한 것 보기 →</a>
@@ -226,6 +250,7 @@
     <div class="wrap">
       <p class="sec-label">연재 · 하나씩 채워갑니다</p>
       <h2>최근 업데이트</h2>
+
       <div class="feed">
         <div class="item">
           <span class="cat issue">정리</span>
@@ -410,6 +435,7 @@
   show(1);
 })();
 </script>
+<script src="/search.js" defer></script>
 
 <footer>
   <div class="wrap">
