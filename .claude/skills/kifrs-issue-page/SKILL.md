@@ -42,6 +42,7 @@ description: "K-IFRS 제1118호와 관련된 실무 쟁점 한 건을 'B 쟁점 
 - [ ] **쟁점 인덱스** `issues/index.html` 의 `쟁점 목록`에 항목 1줄 추가. 이미 '작성 중' placeholder 행이 있으면 링크된 행으로 교체한다.
 - [ ] **홈 피드** `kifrs1118-home.html` 의 `최근 업데이트` 맨 위에 1줄 추가. 같은 주제의 '작성 중/예정' 행이 남아 있으면 지운다.
 - [ ] **`sitemap.xml` 에 `<url>` 블록 추가** — 자동 생성이 아니다. 빠뜨리면 새 페이지가 색인되지 않는다.
+- [ ] **`node build-search-index.js` 재실행** — 사이트 검색 색인도 수동 생성이다. 빠뜨리면 새 글이 검색에 안 잡히는데 에러가 안 뜬다.
   ```xml
   <url>
     <loc>https://kifrs1118-archive.vercel.app/issues/[slug]</loc>

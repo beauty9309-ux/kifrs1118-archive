@@ -69,6 +69,7 @@ description: "1118호 때문에 '실질' 개정된 소수 기준서 한 건을 A
   `<td class="link soon">상세 예정</td>` → `<td class="link"><a href="/amendments/kXXXX">상세 →</a></td>`
 - [ ] **홈 피드**에 1줄 추가하고, **같은 주제의 '예정' placeholder 행이 남아 있으면 지우거나 다음 대상으로 교체**한다(같은 항목이 두 번 노출되는 것을 막는다). 다음 대상이 없으면 placeholder 행 자체를 없앤다.
 - [ ] **`sitemap.xml` 에 `<url>` 블록 추가** — 자동 생성이 아니다. 빠뜨리면 새 페이지가 색인되지 않는다.
+- [ ] **`node build-search-index.js` 재실행** — 사이트 검색 색인도 수동 생성이다. 빠뜨리면 새 글이 검색에 안 잡히는데 에러가 안 뜬다.
   ```xml
   <url>
     <loc>https://kifrs1118-archive.vercel.app/amendments/kXXXX</loc>

@@ -53,11 +53,14 @@ https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;600;700&family=N
 - **도메인은 `https://kifrs1118-archive.vercel.app`** (Vercel 기본). `canonical`·`og:url`·JSON-LD `item`에 placeholder를 남기지 않는다.
 
 ## 운영 규칙 — 조용히 깨지는 것들 (Search Console 등록 이후)
-검색 색인은 실패해도 에러가 안 뜬다. 아래 셋은 눈에 안 보이게 망가지므로 규칙으로 지킨다.
+검색 색인은 실패해도 에러가 안 뜬다. 아래 넷은 눈에 안 보이게 망가지므로 규칙으로 지킨다.
 
 1. **`google-site-verification` meta 태그를 지우지 않는다.** `kifrs1118-home.html`의 `<head>`에 있고, 지우면 Search Console 소유권이 해제된다. **홈 리팩터링·Next.js 이전 때 head를 옮길 경우 이 태그가 따라갔는지 반드시 확인한다.**
 2. **`sitemap.xml`은 수동 관리다.** 페이지를 추가하면 `<url>` 블록을 직접 넣는다(스킬의 '마무리 연결' 체크리스트에 포함). 빠뜨리면 새 페이지가 색인되지 않는다.
 3. **색인된 URL의 경로를 바꾸지 않는다.** 바꿔야 하면 `vercel.json`에 301 리다이렉트를 함께 넣는다. 커스텀 도메인으로 이전할 때는 301 + Search Console 새 속성 등록 + sitemap 재제출이 한 묶음이다.
+4. **사이트 검색 색인도 수동 생성이다.** 페이지를 추가하거나 제목·본문을 고치면 `node build-search-index.js`를 다시 돌린다. 빠뜨리면 그 글이 사이트 검색에 안 잡히는데, **페이지는 멀쩡히 보이고 에러도 없어서 알아채기 어렵다.** 색인은 `issues/`·`amendments/`의 본문을 훑어 `search-index.json`을 만들며, 홈의 검색창(`search.js`)이 이 파일 하나만 받아 쓴다.
+
+> **페이지를 추가하면 손대야 하는 곳은 넷이다** — ① 홈 피드 1줄 ② 쟁점 인덱스 또는 개정 지도 행 ③ `sitemap.xml`의 `<url>` ④ `node build-search-index.js`. 넷 다 자동이 아니다.
 
 ## 파일 규칙
 배포 구조는 **하위폴더로 확정**됐다(평면 아님).
